@@ -77,17 +77,17 @@ class SeverrClient
     {
         $this->apiKey = $apiKey;
         $this->url = $url;
-        $this->contextAppVersion = !$contextAppVersion ? "1.0" : $contextAppVersion;
-        $this->contextEnvName = !$contextEnvName ? "development" : $contextEnvName;
+        $this->contextAppVersion = is_null($contextAppVersion) ? "1.0" : $contextAppVersion;
+        $this->contextEnvName = is_null($contextEnvName) ? "development" : $contextEnvName;
         $this->contextEnvVersion = $contextEnvVersion;
         $this->contextEnvHostname = $contextEnvHostname;
-        $this->$contextAppOS = !$contextAppOS ? php_uname("s") : $contextAppOS;
-        $this->contextAppOSVersion = !$contextAppOSVersion ? php_uname("v") : $contextAppOSVersion;
+        $this->$contextAppOS = is_null($contextAppOS) ? php_uname("s") : $contextAppOS;
+        $this->contextAppOSVersion = is_null($contextAppOSVersion) ? php_uname("v") : $contextAppOSVersion;
         $this->contextDataCenter = $contextDataCenter;
         $this->contextDataCenterRegion = $contextDataCenterRegion;
 
         $apiClient = new ApiClient();
-        if ($url) {
+        if (!is_null($url)) {
             $apiClient->getConfig()->setHost($url);
         }
         $this->eventsApi = new EventsApi($apiClient);
@@ -129,23 +129,23 @@ class SeverrClient
 
     private function fillDefaults(AppEvent $appEvent)
     {
-        if (!$appEvent->getApiKey()) $appEvent->setApiKey($this->apiKey);
+        if (is_null($appEvent->getApiKey())) $appEvent->setApiKey($this->apiKey);
 
-        if (!$appEvent->getContextAppVersion()) $appEvent->setContextAppVersion($this->contextAppVersion);
+        if (is_null($appEvent->getContextAppVersion())) $appEvent->setContextAppVersion($this->contextAppVersion);
 
-        if (!$appEvent->getContextEnvName()) $appEvent->setContextEnvName($this->contextEnvName);
-        if (!$appEvent->getContextEnvVersion()) $appEvent->setContextEnvVersion($this->contextEnvVersion);
-        if (!$appEvent->getContextEnvHostname()) $appEvent->setContextEnvHostname($this->contextEnvHostname);
+        if (is_null($appEvent->getContextEnvName())) $appEvent->setContextEnvName($this->contextEnvName);
+        if (is_null($appEvent->getContextEnvVersion())) $appEvent->setContextEnvVersion($this->contextEnvVersion);
+        if (is_null($appEvent->getContextEnvHostname())) $appEvent->setContextEnvHostname($this->contextEnvHostname);
 
-        if (!$appEvent->getContextAppOS()) {
+        if (is_null($appEvent->getContextAppOS())) {
             $appEvent->setContextAppOS($this->contextAppOS);
             $appEvent->setContextAppOSVersion($this->contextAppOSVersion);
         }
 
-        if (!$appEvent->getContextDataCenter()) $appEvent->setContextDataCenter($this->contextDataCenter);
-        if (!$appEvent->getContextDataCenterRegion()) $appEvent->setContextDataCenterRegion($this->contextDataCenterRegion);
+        if (is_null($appEvent->getContextDataCenter())) $appEvent->setContextDataCenter($this->contextDataCenter);
+        if (is_null($appEvent->getContextDataCenterRegion())) $appEvent->setContextDataCenterRegion($this->contextDataCenterRegion);
 
-        if (!$appEvent->getEventTime()) $appEvent->setEventTime($this->millitime());
+        if (is_null($appEvent->getEventTime())) $appEvent->setEventTime($this->millitime());
         return $appEvent;
     }
 
