@@ -28,10 +28,9 @@
 
 namespace severr;
 
-use \severr\Configuration;
-use \severr\ApiClient;
-use \severr\ApiException;
-use \severr\ObjectSerializer;
+use severr\client\EventsApi;
+use \severr\client\ApiClient;
+use severr\client\model\AppEvent;
 
 /**
  * EventsApi Class Doc Comment
@@ -45,131 +44,118 @@ use \severr\ObjectSerializer;
 class SeverrClient
 {
 
-    /**
-     * API Client
-     *
-     * @var \severr\ApiClient instance of the ApiClient
-     */
-    protected $apiClient;
+    protected $eventsApi;
+    protected $apiKey;
+    protected $url;
+    protected $contextAppVersion;
+    protected $contextEnvName;
+    protected $contextEnvVersion;
+    protected $contextEnvHostname;
+    protected $contextAppOS;
+    protected $contextAppOSVersion;
+    protected $contextAppBrowser;
+    protected $contextAppBrowserVersion;
+    protected $contextDataCenter;
+    protected $contextDataCenterRegion;
+    private $errorHelper;
 
     /**
-     * Constructor
+     * SeverrClient constructor.
      *
-     * @param \severr\ApiClient|null $apiClient The api client to use
+     * @param null $apiKey API Key for the application
+     * @param null $url (optional) URL to Severr, specify null to use default
+     * @param string $contextAppVersion (optional) application version, defaults to 1.0
+     * @param string $contextEnvName (optional) environment name like "development", "staging", "production" or a custom string
+     * @param null $contextEnvVersion (optional) environment version
+     * @param null $contextEnvHostname (optional) environment hostname, defaults to hostname
+     * @param null $contextAppOS (optional) Operating system
+     * @param null $contextAppOSVersion (optional)  Operating system version
+     * @param null $contextDataCenter (optional) Data center
+     * @param null $contextDataCenterRegion (optional) Data center region
      */
-    public function __construct(\severr\ApiClient $apiClient = null)
+    public function __construct($apiKey = null, $url = null, $contextAppVersion = "1.0", $contextEnvName = "development", $contextEnvVersion = null, $contextEnvHostname = null, $contextAppOS = null, $contextAppOSVersion = null, $contextDataCenter = null, $contextDataCenterRegion = null)
     {
-        if ($apiClient == null) {
-            $apiClient = new ApiClient();
-            $apiClient->getConfig()->setHost('https://www.severr.io/api/v1');
-        }
+        $this->apiKey = $apiKey;
+        $this->url = $url;
+        $this->contextAppVersion = !$contextAppVersion ? "1.0" : $contextAppVersion;
+        $this->contextEnvName = !$contextEnvName ? "development" : $contextEnvName;
+        $this->contextEnvVersion = $contextEnvVersion;
+        $this->contextEnvHostname = $contextEnvHostname;
+        $this->$contextAppOS = !$contextAppOS ? php_uname("s") : $contextAppOS;
+        $this->contextAppOSVersion = !$contextAppOSVersion ? php_uname("v") : $contextAppOSVersion;
+        $this->contextDataCenter = $contextDataCenter;
+        $this->contextDataCenterRegion = $contextDataCenterRegion;
 
-        $this->apiClient = $apiClient;
+        $apiClient = new ApiClient();
+        if ($url) {
+            $apiClient->getConfig()->setHost($url);
+        }
+        $this->eventsApi = new EventsApi($apiClient);
     }
 
     /**
-     * Get API client
-     *
-     * @return \severr\ApiClient get the API client
+     * @param string $classification classification like "Error", "Debug", "Warning" or "Info" or a custom string
+     * @param string $eventType event type
+     * @param string $eventMessage event message
+     * @return mixed
      */
-    public function getApiClient()
+    public function createAppEvent($classification = "Error", $eventType = "unknown", $eventMessage = "unknown")
     {
-        return $this->apiClient;
+
+        return $this->fillDefaults(new AppEvent(array("classification" => $classification, "event_type" => $eventType, "event_message" => $eventMessage)));
     }
 
     /**
-     * Set the API client
+     * Send the app event to Severr
      *
-     * @param \severr\ApiClient $apiClient set the API client
-     *
-     * @return EventsApi
+     * @param $appEvent app event to post
      */
-    public function setApiClient(\severr\ApiClient $apiClient)
+    public function sendEvent($appEvent)
     {
-        $this->apiClient = $apiClient;
-        return $this;
+        return $this->eventsApi->eventsPost($this->fillDefaults($appEvent));
     }
 
     /**
-     * Operation eventsPost
-     *
-     * Submit an application event or error to Severr
-     *
-     * @param \io\severr\model\AppEvent $data Event to submit (required)
-     * @return void
-     * @throws \severr\ApiException on non-2xx response
+     * Register error handlers.
      */
-    public function eventsPost($data)
+    public function registerErrorHandlers()
     {
-        list($response) = $this->eventsPostWithHttpInfo($data);
-        return $response;
+        if (!$this->errorHelper) {
+            $this->errorHelper = new ErrorHelper($this);
+        }
+
+        $this->errorHelper->register();
     }
 
-    /**
-     * Operation eventsPostWithHttpInfo
-     *
-     * Submit an application event or error to Severr
-     *
-     * @param \io\severr\model\AppEvent $data Event to submit (required)
-     * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \severr\ApiException on non-2xx response
-     */
-    public function eventsPostWithHttpInfo($data)
+    private function fillDefaults(AppEvent $appEvent)
     {
-        // verify the required parameter 'data' is set
-        if ($data === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $data when calling eventsPost');
-        }
-        // parse inputs
-        $resourcePath = "/events";
-        $httpBody = '';
-        $queryParams = array();
-        $headerParams = array();
-        $formParams = array();
-        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array());
+        if (!$appEvent->getApiKey()) $appEvent->setApiKey($this->apiKey);
 
-        // default format to json
-        $resourcePath = str_replace("{format}", "json", $resourcePath);
+        if (!$appEvent->getContextAppVersion()) $appEvent->setContextAppVersion($this->contextAppVersion);
 
-        // body params
-        $_tempBody = null;
-        if (isset($data)) {
-            $_tempBody = $data;
+        if (!$appEvent->getContextEnvName()) $appEvent->setContextEnvName($this->contextEnvName);
+        if (!$appEvent->getContextEnvVersion()) $appEvent->setContextEnvVersion($this->contextEnvVersion);
+        if (!$appEvent->getContextEnvHostname()) $appEvent->setContextEnvHostname($this->contextEnvHostname);
+
+        if (!$appEvent->getContextAppOS()) {
+            $appEvent->setContextAppOS($this->contextAppOS);
+            $appEvent->setContextAppOSVersion($this->contextAppOSVersion);
         }
 
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'POST',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                null,
-                '/events'
-            );
+        if (!$appEvent->getContextDataCenter()) $appEvent->setContextDataCenter($this->contextDataCenter);
+        if (!$appEvent->getContextDataCenterRegion()) $appEvent->setContextDataCenterRegion($this->contextDataCenterRegion);
 
-            return array(null, $statusCode, $httpHeader);
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                default:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\io\severr\model\Error', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
+        if (!$appEvent->getEventTime()) $appEvent->setEventTime($this->millitime());
+        return $appEvent;
     }
 
+    private function millitime()
+    {
+        $microtime = microtime();
+        $comps = explode(' ', $microtime);
+
+        // Note: Using a string here to prevent loss of precision
+        // in case of "overflow" (PHP converts it to a double)
+        return sprintf('%d%03d', $comps[1], $comps[0] * 1000);
+    }
 }
