@@ -26,7 +26,7 @@
  * limitations under the License.
  */
 
-namespace severrclient;
+namespace severr;
 
 use \severr\Configuration;
 use \severr\ApiClient;
