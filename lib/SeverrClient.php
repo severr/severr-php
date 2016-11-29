@@ -81,7 +81,7 @@ class SeverrClient
         $this->contextEnvName = is_null($contextEnvName) ? "development" : $contextEnvName;
         $this->contextEnvVersion = $contextEnvVersion;
         $this->contextEnvHostname = $contextEnvHostname;
-        $this->$contextAppOS = is_null($contextAppOS) ? php_uname("s") : $contextAppOS;
+        $this->contextAppOS = is_null($contextAppOS) ? php_uname("s") : $contextAppOS;
         $this->contextAppOSVersion = is_null($contextAppOSVersion) ? php_uname("v") : $contextAppOSVersion;
         $this->contextDataCenter = $contextDataCenter;
         $this->contextDataCenterRegion = $contextDataCenterRegion;
