@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  severr
+ * @package  severr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -39,7 +39,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace severr;
+namespace severr\client;
 
 /**
  * CustomDoubleDataTest Class Doc Comment
@@ -47,7 +47,7 @@ namespace severr;
  * @category    Class */
 // * @description CustomDoubleData
 /**
- * @package     severr
+ * @package     severr\client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen

@@ -1,11 +1,11 @@
 <?php
 /**
- * CustomStringData
+ * CustomDoubleData
  *
  * PHP version 5
  *
  * @category Class
- * @package  severr
+ * @package  severr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -39,43 +39,43 @@
  * Do not edit the class manually.
  */
 
-namespace io.severr.model;
+namespace severr\client\model;
 
 use \ArrayAccess;
 
 /**
- * CustomStringData Class Doc Comment
+ * CustomDoubleData Class Doc Comment
  *
  * @category    Class */
 /** 
- * @package     severr
+ * @package     severr\client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class CustomStringData implements ArrayAccess
+class CustomDoubleData implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'CustomStringData';
+    protected static $swaggerModelName = 'CustomDoubleData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'custom_data1' => 'string',
-        'custom_data2' => 'string',
-        'custom_data3' => 'string',
-        'custom_data4' => 'string',
-        'custom_data5' => 'string',
-        'custom_data6' => 'string',
-        'custom_data7' => 'string',
-        'custom_data8' => 'string',
-        'custom_data9' => 'string',
-        'custom_data10' => 'string'
+        'custom_data1' => 'double',
+        'custom_data2' => 'double',
+        'custom_data3' => 'double',
+        'custom_data4' => 'double',
+        'custom_data5' => 'double',
+        'custom_data6' => 'double',
+        'custom_data7' => 'double',
+        'custom_data8' => 'double',
+        'custom_data9' => 'double',
+        'custom_data10' => 'double'
     );
 
     public static function swaggerTypes()
@@ -202,7 +202,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Gets custom_data1
-     * @return string
+     * @return double
      */
     public function getCustomData1()
     {
@@ -211,7 +211,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Sets custom_data1
-     * @param string $custom_data1
+     * @param double $custom_data1
      * @return $this
      */
     public function setCustomData1($custom_data1)
@@ -223,7 +223,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Gets custom_data2
-     * @return string
+     * @return double
      */
     public function getCustomData2()
     {
@@ -232,7 +232,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Sets custom_data2
-     * @param string $custom_data2
+     * @param double $custom_data2
      * @return $this
      */
     public function setCustomData2($custom_data2)
@@ -244,7 +244,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Gets custom_data3
-     * @return string
+     * @return double
      */
     public function getCustomData3()
     {
@@ -253,7 +253,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Sets custom_data3
-     * @param string $custom_data3
+     * @param double $custom_data3
      * @return $this
      */
     public function setCustomData3($custom_data3)
@@ -265,7 +265,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Gets custom_data4
-     * @return string
+     * @return double
      */
     public function getCustomData4()
     {
@@ -274,7 +274,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Sets custom_data4
-     * @param string $custom_data4
+     * @param double $custom_data4
      * @return $this
      */
     public function setCustomData4($custom_data4)
@@ -286,7 +286,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Gets custom_data5
-     * @return string
+     * @return double
      */
     public function getCustomData5()
     {
@@ -295,7 +295,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Sets custom_data5
-     * @param string $custom_data5
+     * @param double $custom_data5
      * @return $this
      */
     public function setCustomData5($custom_data5)
@@ -307,7 +307,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Gets custom_data6
-     * @return string
+     * @return double
      */
     public function getCustomData6()
     {
@@ -316,7 +316,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Sets custom_data6
-     * @param string $custom_data6
+     * @param double $custom_data6
      * @return $this
      */
     public function setCustomData6($custom_data6)
@@ -328,7 +328,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Gets custom_data7
-     * @return string
+     * @return double
      */
     public function getCustomData7()
     {
@@ -337,7 +337,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Sets custom_data7
-     * @param string $custom_data7
+     * @param double $custom_data7
      * @return $this
      */
     public function setCustomData7($custom_data7)
@@ -349,7 +349,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Gets custom_data8
-     * @return string
+     * @return double
      */
     public function getCustomData8()
     {
@@ -358,7 +358,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Sets custom_data8
-     * @param string $custom_data8
+     * @param double $custom_data8
      * @return $this
      */
     public function setCustomData8($custom_data8)
@@ -370,7 +370,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Gets custom_data9
-     * @return string
+     * @return double
      */
     public function getCustomData9()
     {
@@ -379,7 +379,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Sets custom_data9
-     * @param string $custom_data9
+     * @param double $custom_data9
      * @return $this
      */
     public function setCustomData9($custom_data9)
@@ -391,7 +391,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Gets custom_data10
-     * @return string
+     * @return double
      */
     public function getCustomData10()
     {
@@ -400,7 +400,7 @@ class CustomStringData implements ArrayAccess
 
     /**
      * Sets custom_data10
-     * @param string $custom_data10
+     * @param double $custom_data10
      * @return $this
      */
     public function setCustomData10($custom_data10)
@@ -461,10 +461,10 @@ class CustomStringData implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\severr\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\severr\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

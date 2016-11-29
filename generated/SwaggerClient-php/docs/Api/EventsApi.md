@@ -1,4 +1,4 @@
-# severr\EventsApi
+# severr\client\EventsApi
 
 All URIs are relative to *https://www.severr.io/api/v1*
 
@@ -19,8 +19,8 @@ The events endpoint submits an application event or an application error / excep
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new severr\Api\EventsApi();
-$data = new \io.severr.model\AppEvent(); // \io.severr.model\AppEvent | Event to submit
+$api_instance = new severr\client\Api\EventsApi();
+$data = new \severr\client\model\AppEvent(); // \severr\client\model\AppEvent | Event to submit
 
 try {
     $api_instance->eventsPost($data);
@@ -34,7 +34,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**\io.severr.model\AppEvent**](../Model/\io.severr.model\AppEvent.md)| Event to submit |
+ **data** | [**\severr\client\model\AppEvent**](../Model/\severr\client\model\AppEvent.md)| Event to submit |
 
 ### Return type
 

@@ -1,11 +1,11 @@
 <?php
 /**
- * Error
+ * CustomData
  *
  * PHP version 5
  *
  * @category Class
- * @package  severr
+ * @package  severr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -39,36 +39,36 @@
  * Do not edit the class manually.
  */
 
-namespace io.severr.model;
+namespace severr\client\model;
 
 use \ArrayAccess;
 
 /**
- * Error Class Doc Comment
+ * CustomData Class Doc Comment
  *
  * @category    Class */
+ // @description (optional) Custom string or double data to submit along with the event. This data can then be used in the Severr UI to view segmented data.
 /** 
- * @package     severr
+ * @package     severr\client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Error implements ArrayAccess
+class CustomData implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Error';
+    protected static $swaggerModelName = 'CustomData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'code' => 'int',
-        'message' => 'string',
-        'fields' => 'string'
+        'string_data' => '\severr\client\model\CustomStringData',
+        'double_data' => '\severr\client\model\CustomDoubleData'
     );
 
     public static function swaggerTypes()
@@ -81,9 +81,8 @@ class Error implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'code' => 'code',
-        'message' => 'message',
-        'fields' => 'fields'
+        'string_data' => 'stringData',
+        'double_data' => 'doubleData'
     );
 
     public static function attributeMap()
@@ -96,9 +95,8 @@ class Error implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'code' => 'setCode',
-        'message' => 'setMessage',
-        'fields' => 'setFields'
+        'string_data' => 'setStringData',
+        'double_data' => 'setDoubleData'
     );
 
     public static function setters()
@@ -111,9 +109,8 @@ class Error implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'code' => 'getCode',
-        'message' => 'getMessage',
-        'fields' => 'getFields'
+        'string_data' => 'getStringData',
+        'double_data' => 'getDoubleData'
     );
 
     public static function getters()
@@ -137,9 +134,8 @@ class Error implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['fields'] = isset($data['fields']) ? $data['fields'] : null;
+        $this->container['string_data'] = isset($data['string_data']) ? $data['string_data'] : null;
+        $this->container['double_data'] = isset($data['double_data']) ? $data['double_data'] : null;
     }
 
     /**
@@ -166,64 +162,43 @@ class Error implements ArrayAccess
 
 
     /**
-     * Gets code
-     * @return int
+     * Gets string_data
+     * @return \severr\client\model\CustomStringData
      */
-    public function getCode()
+    public function getStringData()
     {
-        return $this->container['code'];
+        return $this->container['string_data'];
     }
 
     /**
-     * Sets code
-     * @param int $code
+     * Sets string_data
+     * @param \severr\client\model\CustomStringData $string_data
      * @return $this
      */
-    public function setCode($code)
+    public function setStringData($string_data)
     {
-        $this->container['code'] = $code;
+        $this->container['string_data'] = $string_data;
 
         return $this;
     }
 
     /**
-     * Gets message
-     * @return string
+     * Gets double_data
+     * @return \severr\client\model\CustomDoubleData
      */
-    public function getMessage()
+    public function getDoubleData()
     {
-        return $this->container['message'];
+        return $this->container['double_data'];
     }
 
     /**
-     * Sets message
-     * @param string $message
+     * Sets double_data
+     * @param \severr\client\model\CustomDoubleData $double_data
      * @return $this
      */
-    public function setMessage($message)
+    public function setDoubleData($double_data)
     {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets fields
-     * @return string
-     */
-    public function getFields()
-    {
-        return $this->container['fields'];
-    }
-
-    /**
-     * Sets fields
-     * @param string $fields
-     * @return $this
-     */
-    public function setFields($fields)
-    {
-        $this->container['fields'] = $fields;
+        $this->container['double_data'] = $double_data;
 
         return $this;
     }
@@ -279,10 +254,10 @@ class Error implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\severr\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\severr\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

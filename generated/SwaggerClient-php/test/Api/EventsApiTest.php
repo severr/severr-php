@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  severr
+ * @package  severr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -38,18 +38,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace severr;
+namespace severr\client;
 
-use \severr\Configuration;
-use \severr\ApiClient;
-use \severr\ApiException;
-use \severr\ObjectSerializer;
+use \severr\client\Configuration;
+use \severr\client\ApiClient;
+use \severr\client\ApiException;
+use \severr\client\ObjectSerializer;
 
 /**
  * EventsApiTest Class Doc Comment
  *
  * @category Class
- * @package  severr
+ * @package  severr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen

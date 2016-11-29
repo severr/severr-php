@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  severr
+ * @package  severr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -38,18 +38,18 @@
  * Do not edit the class manually.
  */
 
-namespace io.severr;
+namespace severr\client;
 
-use \severr\Configuration;
-use \severr\ApiClient;
-use \severr\ApiException;
-use \severr\ObjectSerializer;
+use \severr\client\Configuration;
+use \severr\client\ApiClient;
+use \severr\client\ApiException;
+use \severr\client\ObjectSerializer;
 
 /**
  * EventsApi Class Doc Comment
  *
  * @category Class
- * @package  severr
+ * @package  severr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -60,16 +60,16 @@ class EventsApi
     /**
      * API Client
      *
-     * @var \severr\ApiClient instance of the ApiClient
+     * @var \severr\client\ApiClient instance of the ApiClient
      */
     protected $apiClient;
 
     /**
      * Constructor
      *
-     * @param \severr\ApiClient|null $apiClient The api client to use
+     * @param \severr\client\ApiClient|null $apiClient The api client to use
      */
-    public function __construct(\severr\ApiClient $apiClient = null)
+    public function __construct(\severr\client\ApiClient $apiClient = null)
     {
         if ($apiClient == null) {
             $apiClient = new ApiClient();
@@ -82,7 +82,7 @@ class EventsApi
     /**
      * Get API client
      *
-     * @return \severr\ApiClient get the API client
+     * @return \severr\client\ApiClient get the API client
      */
     public function getApiClient()
     {
@@ -92,11 +92,11 @@ class EventsApi
     /**
      * Set the API client
      *
-     * @param \severr\ApiClient $apiClient set the API client
+     * @param \severr\client\ApiClient $apiClient set the API client
      *
      * @return EventsApi
      */
-    public function setApiClient(\severr\ApiClient $apiClient)
+    public function setApiClient(\severr\client\ApiClient $apiClient)
     {
         $this->apiClient = $apiClient;
         return $this;
@@ -107,9 +107,9 @@ class EventsApi
      *
      * Submit an application event or error to Severr
      *
-     * @param \io.severr.model\AppEvent $data Event to submit (required)
+     * @param \severr\client\model\AppEvent $data Event to submit (required)
      * @return void
-     * @throws \severr\ApiException on non-2xx response
+     * @throws \severr\client\ApiException on non-2xx response
      */
     public function eventsPost($data)
     {
@@ -122,9 +122,9 @@ class EventsApi
      *
      * Submit an application event or error to Severr
      *
-     * @param \io.severr.model\AppEvent $data Event to submit (required)
+     * @param \severr\client\model\AppEvent $data Event to submit (required)
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \severr\ApiException on non-2xx response
+     * @throws \severr\client\ApiException on non-2xx response
      */
     public function eventsPostWithHttpInfo($data)
     {
@@ -175,7 +175,7 @@ class EventsApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 default:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\io.severr.model\Error', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\severr\client\model\Error', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

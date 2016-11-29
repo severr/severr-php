@@ -1,11 +1,11 @@
 <?php
 /**
- * StackTraceLines
+ * StackTraceLine
  *
  * PHP version 5
  *
  * @category Class
- * @package  severr
+ * @package  severr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -39,34 +39,36 @@
  * Do not edit the class manually.
  */
 
-namespace io.severr.model;
+namespace severr\client\model;
 
 use \ArrayAccess;
 
 /**
- * StackTraceLines Class Doc Comment
+ * StackTraceLine Class Doc Comment
  *
  * @category    Class */
 /** 
- * @package     severr
+ * @package     severr\client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class StackTraceLines implements ArrayAccess
+class StackTraceLine implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'StackTraceLines';
+    protected static $swaggerModelName = 'StackTraceLine';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        
+        'function' => 'string',
+        'line' => 'int',
+        'file' => 'string'
     );
 
     public static function swaggerTypes()
@@ -79,7 +81,9 @@ class StackTraceLines implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        
+        'function' => 'function',
+        'line' => 'line',
+        'file' => 'file'
     );
 
     public static function attributeMap()
@@ -92,7 +96,9 @@ class StackTraceLines implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        
+        'function' => 'setFunction',
+        'line' => 'setLine',
+        'file' => 'setFile'
     );
 
     public static function setters()
@@ -105,7 +111,9 @@ class StackTraceLines implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        
+        'function' => 'getFunction',
+        'line' => 'getLine',
+        'file' => 'getFile'
     );
 
     public static function getters()
@@ -129,6 +137,9 @@ class StackTraceLines implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['function'] = isset($data['function']) ? $data['function'] : null;
+        $this->container['line'] = isset($data['line']) ? $data['line'] : null;
+        $this->container['file'] = isset($data['file']) ? $data['file'] : null;
     }
 
     /**
@@ -153,6 +164,69 @@ class StackTraceLines implements ArrayAccess
         return true;
     }
 
+
+    /**
+     * Gets function
+     * @return string
+     */
+    public function getFunction()
+    {
+        return $this->container['function'];
+    }
+
+    /**
+     * Sets function
+     * @param string $function
+     * @return $this
+     */
+    public function setFunction($function)
+    {
+        $this->container['function'] = $function;
+
+        return $this;
+    }
+
+    /**
+     * Gets line
+     * @return int
+     */
+    public function getLine()
+    {
+        return $this->container['line'];
+    }
+
+    /**
+     * Sets line
+     * @param int $line
+     * @return $this
+     */
+    public function setLine($line)
+    {
+        $this->container['line'] = $line;
+
+        return $this;
+    }
+
+    /**
+     * Gets file
+     * @return string
+     */
+    public function getFile()
+    {
+        return $this->container['file'];
+    }
+
+    /**
+     * Sets file
+     * @param string $file
+     * @return $this
+     */
+    public function setFile($file)
+    {
+        $this->container['file'] = $file;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      * @param  integer $offset Offset
@@ -205,10 +279,10 @@ class StackTraceLines implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\severr\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\severr\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

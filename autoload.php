@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Severr API
+ * Severr  Client API
  *
  * Get your application events and errors to Severr via the *Severr API*.
  *
@@ -26,40 +26,54 @@
  * An example of a project-specific implementation.
  *
  * After registering this autoload function with SPL, the following line
- * would cause the function to attempt to load the \severr\client\Baz\Qux class
+ * would cause the function to attempt to load the \severr\Baz\Qux class
  * from /path/to/project/lib/Baz/Qux.php:
  *
- *      new \severr\client\Baz\Qux;
+ *      new \severr\Baz\Qux;
  *
  * @param string $class The fully-qualified class name.
  *
  * @return void
  */
 spl_autoload_register(function ($class) {
-
     // project-specific namespace prefix
-    $prefix = 'severr\\client\\';
+    $relative_class_name = getRelativeClassName($class, 'severr\\client');
 
-    // base directory for the namespace prefix
-    $base_dir = __DIR__ . '/lib/';
+    if($relative_class_name) {
 
-    // does the class use the namespace prefix?
-    $len = strlen($prefix);
-    if (strncmp($prefix, $class, $len) !== 0) {
-        // no, move to the next registered autoloader
-        return;
+        // base directory for the namespace prefix
+        $base_dir = __DIR__ . 'generated/lib/';
+    } else {
+        $relative_class_name = getRelativeClassName($class, 'severr\\');
+
+        // move to the next registered autoloader
+        if(!$relative_class_name) { return; }
+
+        // base directory for the namespace prefix
+        $base_dir = __DIR__ . 'lib/';
     }
-
-    // get the relative class name
-    $relative_class = substr($class, $len);
 
     // replace the namespace prefix with the base directory, replace namespace
     // separators with directory separators in the relative class name, append
     // with .php
-    $file = $base_dir . str_replace('\\', '/', $relative_class) . '.php';
+    $file = $base_dir . str_replace('\\', '/', $relative_class_name) . '.php';
 
     // if the file exists, require it
     if (file_exists($file)) {
         require $file;
     }
 });
+
+function getRelativeClassName($class, $prefix) {
+
+    // does the class use the namespace prefix?
+    $len = strlen($prefix);
+    if (strncmp($prefix, $class, $len) !== 0) {
+        return null;
+    }
+
+    // get the relative class name
+    $relative_class = substr($class, $len);
+
+    return $relative_class;
+}
