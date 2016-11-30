@@ -114,7 +114,8 @@ class SeverrClient
      */
     public function sendEvent($appEvent)
     {
-        return $this->eventsApi->eventsPost($this->fillDefaults($appEvent));
+        $data = $this->fillDefaults($appEvent);
+        return $this->eventsApi->eventsPost($data);
     }
 
     /**

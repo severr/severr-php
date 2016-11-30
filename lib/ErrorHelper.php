@@ -5,15 +5,13 @@
 namespace severr;
 
 use Exception;
+use severr\client\model\InnerStackTrace;
 use severr\client\model\Stacktrace;
 use severr\client\model\StackTraceLine;
 use severr\client\model\StackTraceLines;
 
 class ErrorHelper
 {
-    /**
-     * @var SeverrClient
-     */
     private $severrClient;
 
     /*
@@ -25,26 +23,50 @@ class ErrorHelper
     }
 
     private function buildAppEvent($classification, Exception $exc) {
-        $appEvent = $this->severrClient->createAppEvent($classification, $exc->getMessage(), get_class($exc));
-        $appEvent->setEventStacktrace($this->createStacktrace($exc));
+        $appEvent = $this->severrClient->createAppEvent($classification, get_class($exc), $exc->getMessage());
+        $appEvent->setEventStacktrace($this->createStacktrace(array(), $exc));
         return $appEvent;
     }
 
-    private function createStacktrace(Exception $exc) {
+    private function createStacktrace($stacktrace, Exception $exc) {
 
-        $stacktrace = new Stacktrace();
-        foreach($exc->getTrace() as $exc_item) {
+        $innerStacktrace = new InnerStackTrace();
+        $innerStacktrace->setMessage($exc->getMessage());
+        $innerStacktrace->setType(get_class($exc));
 
-            $stacktraceLines = new StackTraceLines();
-            foreach($exc_item as $item) {
+        if(!$exc->getTrace()) {
+            $stacktraceLines = array();
+
+            $stacktraceLine = new StackTraceLine();
+            $stacktraceLine->setFunction("main");
+            $stacktraceLine->setLine($exc->getLine());
+            $stacktraceLine->setFile($exc->getFile());
+            $stacktraceLines[] = $stacktraceLine;
+
+            $innerStacktrace->setTraceLines($stacktraceLines);
+
+            $stacktrace[] = $innerStacktrace;
+        } else {
+            $stacktraceLines = array();
+
+            foreach($exc->getTrace() as $item) {
                 $stacktraceLine = new StackTraceLine();
-                $stacktraceLine->setFunction($item["class"] . "->" . $item["function"]);
-                $stacktraceLine->setLine($item["line"]);
-                $stacktraceLine->setFile($item["file"]);
-                array_push($stacktraceLines, $stacktraceLine);
+                $function = isset($item["class"]) ? $item["class"] . "->" : "";
+                $function = $function . $item["function"];
+                $stacktraceLine->setFunction($function);
+                if(isset($item["line"])) $stacktraceLine->setLine($item["line"]);
+                if(isset($item["file"])) $stacktraceLine->setFile($item["file"]);
+                $stacktraceLines[] = $stacktraceLine;
+
             }
 
-            array_push($stacktrace, $stacktraceLines);
+            $innerStacktrace->setTraceLines($stacktraceLines);
+
+            $stacktrace[] = $innerStacktrace;
+
+            if($exc->getPrevious()) {
+                $stacktrace = $this->createStacktrace($stacktrace, $exc->getPrevious());
+            }
         }
 
         return $stacktrace;
