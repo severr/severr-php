@@ -28,6 +28,8 @@
 
 namespace severr;
 
+require_once(__DIR__ . '/../autoload.php');
+
 use severr\client\EventsApi;
 use \severr\client\ApiClient;
 use severr\client\model\AppEvent;
