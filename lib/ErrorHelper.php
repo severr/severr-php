@@ -22,7 +22,7 @@ class ErrorHelper
         $this->severrClient = $severrClient;
     }
 
-    private function buildAppEvent($classification, Exception $exc) {
+    public function createAppEvent($classification, Exception $exc) {
         $appEvent = $this->severrClient->createAppEvent($classification, get_class($exc), $exc->getMessage());
         $appEvent->setEventStacktrace($this->createStacktrace(array(), $exc));
         return $appEvent;

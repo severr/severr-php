@@ -30,9 +30,11 @@ namespace severr;
 
 require_once(__DIR__ . '/../autoload.php');
 
+use Exception;
 use severr\client\EventsApi;
 use \severr\client\ApiClient;
 use severr\client\model\AppEvent;
+use severr\client\model\Error;
 
 /**
  * EventsApi Class Doc Comment
@@ -93,6 +95,8 @@ class SeverrClient
             $apiClient->getConfig()->setHost($url);
         }
         $this->eventsApi = new EventsApi($apiClient);
+        $this->errorHelper = new ErrorHelper($this);
+
     }
 
     /**
@@ -119,14 +123,23 @@ class SeverrClient
     }
 
     /**
+     * Send an exception to Severr
+     *
+     * @param $classification classification like "Error", "Warning", "Info" etc.
+     * @param $exc exception
+     */
+    public function sendError($classification, Exception $exc)
+    {
+        $appEvent = $this->errorHelper->createAppEvent($classification, $exc);
+        $data = $this->fillDefaults($appEvent);
+        return $this->eventsApi->eventsPost($data);
+    }
+
+    /**
      * Register error handlers.
      */
     public function registerErrorHandlers()
     {
-        if (!$this->errorHelper) {
-            $this->errorHelper = new ErrorHelper($this);
-        }
-
         $this->errorHelper->register();
     }
 
