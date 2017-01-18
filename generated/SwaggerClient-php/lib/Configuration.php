@@ -4,16 +4,16 @@
  * PHP version 5
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
 /**
- * Severr API
+ * Trakerr API
  *
- * Get your application events and errors to Severr via the *Severr API*.
+ * Get your application events and errors to Trakerr via the *Trakerr API*.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -38,14 +38,14 @@
  * Do not edit the class manually.
  */
 
-namespace severr\client;
+namespace trakerr\client;
 
 /**
  * Configuration Class Doc Comment
  * PHP version 5
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -93,7 +93,7 @@ class Configuration
     /**
      * The default instance of ApiClient
      *
-     * @var \severr\client\ApiClient
+     * @var \trakerr\client\ApiClient
      */
     protected $defaultHeaders = array();
 
@@ -102,7 +102,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://www.severr.io/api/v1';
+    protected $host = 'https://www.trakerr.io/api/v1';
 
     /**
      * Timeout (second) of the HTTP request, by default set to 0, no timeout
@@ -519,7 +519,7 @@ class Configuration
      */
     public static function toDebugReport()
     {
-        $report  = 'PHP SDK (severr\client) Debug Report:' . PHP_EOL;
+        $report  = 'PHP SDK (trakerr\client) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . phpversion() . PHP_EOL;
         $report .= '    OpenAPI Spec Version: 1.0.0' . PHP_EOL;

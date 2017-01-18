@@ -5,16 +5,16 @@
  * PHP version 5
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
 /**
- * Severr API
+ * Trakerr API
  *
- * Get your application events and errors to Severr via the *Severr API*.
+ * Get your application events and errors to Trakerr via the *Trakerr API*.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -39,13 +39,13 @@
  * Do not edit the class manually.
  */
 
-namespace severr\client;
+namespace trakerr\client;
 
 /**
  * ApiClient Class Doc Comment
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -80,7 +80,7 @@ class ApiClient
      *
      * @param Configuration $config config for this ApiClient
      */
-    public function __construct(\severr\client\Configuration $config = null)
+    public function __construct(\trakerr\client\Configuration $config = null)
     {
         if ($config == null) {
             $config = Configuration::getDefaultConfiguration();
@@ -146,7 +146,7 @@ class ApiClient
      * @param string $responseType expected response type of the endpoint
      * @param string $endpointPath path to method endpoint before expanding parameters
      *
-     * @throws \severr\client\ApiException on a non 2xx response
+     * @throws \trakerr\client\ApiException on a non 2xx response
      * @return mixed
      */
     public function callApi($resourcePath, $method, $queryParams, $postData, $headerParams, $responseType = null, $endpointPath = null)
@@ -168,7 +168,7 @@ class ApiClient
         if ($postData and in_array('Content-Type: application/x-www-form-urlencoded', $headers)) {
             $postData = http_build_query($postData);
         } elseif ((is_object($postData) or is_array($postData)) and !in_array('Content-Type: multipart/form-data', $headers)) { // json model
-            $postData = json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($postData));
+            $postData = json_encode(\trakerr\client\ObjectSerializer::sanitizeForSerialization($postData));
         }
 
         $url = $this->config->getHost() . $resourcePath;

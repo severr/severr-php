@@ -5,16 +5,16 @@
  * PHP version 5
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
 /**
- * Severr API
+ * Trakerr API
  *
- * Get your application events and errors to Severr via the *Severr API*.
+ * Get your application events and errors to Trakerr via the *Trakerr API*.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -39,13 +39,13 @@
  * Do not edit the class manually.
  */
 
-namespace severr\client;
+namespace trakerr\client;
 
 /**
  * ObjectSerializer Class Doc Comment
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -286,7 +286,7 @@ class ObjectSerializer
         } else {
             // If a discriminator is defined and points to a valid subclass, use it.
             if (!empty($discriminator) && isset($data->{$discriminator}) && is_string($data->{$discriminator})) {
-                $subclass = '\severr\client\Model\\' . $data->{$discriminator};
+                $subclass = '\trakerr\client\Model\\' . $data->{$discriminator};
                 if (is_subclass_of($subclass, $class)) {
                     $class = $subclass;
                 }

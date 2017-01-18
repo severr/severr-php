@@ -5,16 +5,16 @@
  * PHP version 5
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
 /**
- * Severr API
+ * Trakerr API
  *
- * Get your application events and errors to Severr via the *Severr API*.
+ * Get your application events and errors to Trakerr via the *Trakerr API*.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -39,7 +39,7 @@
  * Do not edit the class manually.
  */
 
-namespace severr\client\model;
+namespace trakerr\client\model;
 
 use \ArrayAccess;
 
@@ -48,7 +48,7 @@ use \ArrayAccess;
  *
  * @category    Class */
 /** 
- * @package     severr\client
+ * @package     trakerr\client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -71,7 +71,7 @@ class AppEvent implements ArrayAccess
         'event_type' => 'string',
         'event_message' => 'string',
         'event_time' => 'int',
-        'event_stacktrace' => '\severr\client\model\Stacktrace',
+        'event_stacktrace' => '\trakerr\client\model\Stacktrace',
         'event_user' => 'string',
         'event_session' => 'string',
         'context_app_version' => 'string',
@@ -84,8 +84,8 @@ class AppEvent implements ArrayAccess
         'context_app_os_version' => 'string',
         'context_data_center' => 'string',
         'context_data_center_region' => 'string',
-        'custom_properties' => '\severr\client\model\CustomData',
-        'custom_segments' => '\severr\client\model\CustomData'
+        'custom_properties' => '\trakerr\client\model\CustomData',
+        'custom_segments' => '\trakerr\client\model\CustomData'
     );
 
     public static function swaggerTypes()
@@ -381,7 +381,7 @@ class AppEvent implements ArrayAccess
 
     /**
      * Gets event_stacktrace
-     * @return \severr\client\model\Stacktrace
+     * @return \trakerr\client\model\Stacktrace
      */
     public function getEventStacktrace()
     {
@@ -390,7 +390,7 @@ class AppEvent implements ArrayAccess
 
     /**
      * Sets event_stacktrace
-     * @param \severr\client\model\Stacktrace $event_stacktrace
+     * @param \trakerr\client\model\Stacktrace $event_stacktrace
      * @return $this
      */
     public function setEventStacktrace($event_stacktrace)
@@ -654,7 +654,7 @@ class AppEvent implements ArrayAccess
 
     /**
      * Gets custom_properties
-     * @return \severr\client\model\CustomData
+     * @return \trakerr\client\model\CustomData
      */
     public function getCustomProperties()
     {
@@ -663,7 +663,7 @@ class AppEvent implements ArrayAccess
 
     /**
      * Sets custom_properties
-     * @param \severr\client\model\CustomData $custom_properties
+     * @param \trakerr\client\model\CustomData $custom_properties
      * @return $this
      */
     public function setCustomProperties($custom_properties)
@@ -675,7 +675,7 @@ class AppEvent implements ArrayAccess
 
     /**
      * Gets custom_segments
-     * @return \severr\client\model\CustomData
+     * @return \trakerr\client\model\CustomData
      */
     public function getCustomSegments()
     {
@@ -684,7 +684,7 @@ class AppEvent implements ArrayAccess
 
     /**
      * Sets custom_segments
-     * @param \severr\client\model\CustomData $custom_segments
+     * @param \trakerr\client\model\CustomData $custom_segments
      * @return $this
      */
     public function setCustomSegments($custom_segments)
@@ -745,10 +745,10 @@ class AppEvent implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\trakerr\client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\trakerr\client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

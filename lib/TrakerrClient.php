@@ -1,17 +1,17 @@
 <?php
 /**
- * SeverrClientsAPI
+ * TrakerrClientsAPI
  * PHP version 5
  *
  * @category Class
- * @package  severr
- * @author   dev@severr.io
+ * @package  trakerr
+ * @author   dev@trakerr.io
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
- * @link     https://github.com/severr/severr-php
+ * @link     https://github.com/trakerr/trakerr-php
  */
 
 /**
- * Severr Client API
+ * Trakerr Client API
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,26 +26,26 @@
  * limitations under the License.
  */
 
-namespace severr;
+namespace trakerr;
 
 require_once(__DIR__ . '/../autoload.php');
 
 use Exception;
-use severr\client\EventsApi;
-use \severr\client\ApiClient;
-use severr\client\model\AppEvent;
-use severr\client\model\Error;
+use trakerr\client\EventsApi;
+use \trakerr\client\ApiClient;
+use trakerr\client\model\AppEvent;
+use trakerr\client\model\Error;
 
 /**
  * EventsApi Class Doc Comment
  *
  * @category Class
- * @package  severr
+ * @package  trakerr
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class SeverrClient
+class TrakerrClient
 {
 
     protected $eventsApi;
@@ -64,10 +64,10 @@ class SeverrClient
     private $errorHelper;
 
     /**
-     * SeverrClient constructor.
+     * TrakerrClient constructor.
      *
      * @param null $apiKey API Key for the application
-     * @param null $url (optional) URL to Severr, specify null to use default
+     * @param null $url (optional) URL to Trakerr, specify null to use default
      * @param string $contextAppVersion (optional) application version, defaults to 1.0
      * @param string $contextEnvName (optional) environment name like "development", "staging", "production" or a custom string
      * @param null $contextEnvVersion (optional) environment version
@@ -112,7 +112,7 @@ class SeverrClient
     }
 
     /**
-     * Send the app event to Severr
+     * Send the app event to Trakerr
      *
      * @param $appEvent app event to post
      */
@@ -123,7 +123,7 @@ class SeverrClient
     }
 
     /**
-     * Send an exception to Severr
+     * Send an exception to Trakerr
      *
      * @param $classification classification like "Error", "Warning", "Info" etc.
      * @param $exc exception

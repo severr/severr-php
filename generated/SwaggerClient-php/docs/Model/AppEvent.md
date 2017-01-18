@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **event_type** | **string** | type or event or error (eg. NullPointerException) | 
 **event_message** | **string** | message containing details of the event or error | 
 **event_time** | **int** | (optional) event time in ms since epoch | [optional] 
-**event_stacktrace** | [**\severr\client\model\Stacktrace**](Stacktrace.md) |  | [optional] 
+**event_stacktrace** | [**\trakerr\client\model\Stacktrace**](Stacktrace.md) |  | [optional]
 **event_user** | **string** | (optional) event user identifying a user | [optional] 
 **event_session** | **string** | (optional) session identification | [optional] 
 **context_app_version** | **string** | (optional) application version information | [optional] 
@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **context_app_os_version** | **string** | (optional) OS version the application is running on | [optional] 
 **context_data_center** | **string** | (optional) Data center the application is running on or connected to | [optional] 
 **context_data_center_region** | **string** | (optional) Data center region | [optional] 
-**custom_properties** | [**\severr\client\model\CustomData**](CustomData.md) |  | [optional] 
-**custom_segments** | [**\severr\client\model\CustomData**](CustomData.md) |  | [optional] 
+**custom_properties** | [**\trakerr\client\model\CustomData**](CustomData.md) |  | [optional]
+**custom_segments** | [**\trakerr\client\model\CustomData**](CustomData.md) |  | [optional]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

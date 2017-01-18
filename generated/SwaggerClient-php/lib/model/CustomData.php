@@ -5,16 +5,16 @@
  * PHP version 5
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
 /**
- * Severr API
+ * Trakerr API
  *
- * Get your application events and errors to Severr via the *Severr API*.
+ * Get your application events and errors to Trakerr via the *Trakerr API*.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -39,7 +39,7 @@
  * Do not edit the class manually.
  */
 
-namespace severr\client\model;
+namespace trakerr\client\model;
 
 use \ArrayAccess;
 
@@ -47,9 +47,9 @@ use \ArrayAccess;
  * CustomData Class Doc Comment
  *
  * @category    Class */
- // @description (optional) Custom string or double data to submit along with the event. This data can then be used in the Severr UI to view segmented data.
+ // @description (optional) Custom string or double data to submit along with the event. This data can then be used in the Trakerr UI to view segmented data.
 /** 
- * @package     severr\client
+ * @package     trakerr\client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -67,8 +67,8 @@ class CustomData implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'string_data' => '\severr\client\model\CustomStringData',
-        'double_data' => '\severr\client\model\CustomDoubleData'
+        'string_data' => '\trakerr\client\model\CustomStringData',
+        'double_data' => '\trakerr\client\model\CustomDoubleData'
     );
 
     public static function swaggerTypes()
@@ -163,7 +163,7 @@ class CustomData implements ArrayAccess
 
     /**
      * Gets string_data
-     * @return \severr\client\model\CustomStringData
+     * @return \trakerr\client\model\CustomStringData
      */
     public function getStringData()
     {
@@ -172,7 +172,7 @@ class CustomData implements ArrayAccess
 
     /**
      * Sets string_data
-     * @param \severr\client\model\CustomStringData $string_data
+     * @param \trakerr\client\model\CustomStringData $string_data
      * @return $this
      */
     public function setStringData($string_data)
@@ -184,7 +184,7 @@ class CustomData implements ArrayAccess
 
     /**
      * Gets double_data
-     * @return \severr\client\model\CustomDoubleData
+     * @return \trakerr\client\model\CustomDoubleData
      */
     public function getDoubleData()
     {
@@ -193,7 +193,7 @@ class CustomData implements ArrayAccess
 
     /**
      * Sets double_data
-     * @param \severr\client\model\CustomDoubleData $double_data
+     * @param \trakerr\client\model\CustomDoubleData $double_data
      * @return $this
      */
     public function setDoubleData($double_data)
@@ -254,10 +254,10 @@ class CustomData implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\trakerr\client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\trakerr\client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

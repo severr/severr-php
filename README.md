@@ -1,5 +1,5 @@
-# severr-php API client
-Get your application events and errors to Severr via the *Severr Client*.
+# trakerr-php API client
+Get your application events and errors to Trakerr via the *Trakerr Client*.
 
 - API version: 1.0.0
 
@@ -17,11 +17,11 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/severr/severr-php.git"
+      "url": "https://github.com/trakerr/trakerr-php.git"
     }
   ],
   "require": {
-    "severr/severr-php": "*@dev"
+    "trakerr/trakerr-php": "*@dev"
   }
 }
 ```
@@ -45,20 +45,20 @@ Please follow the [installation procedure](#installation--usage) and then run th
     require_once(__DIR__ . '/vendor/autoload.php');
 
     // initialize the client
-    $severrClient = new \severr\SeverrClient("<REPLACE WITH API KEY>", null);
+    $trakerrClient = new \trakerr\TrakerrClient("<REPLACE WITH API KEY>", null);
 
     // Option-1: register global exception handlers (optional)
-    $severrClient->registerErrorHandlers();
+    $trakerrClient->registerErrorHandlers();
     
     // Option-2: send event manually
-    $appEvent = $severr_client->createAppEvent("Error", "TestType", "Test message from php");
-    $severr_client->sendEvent($appEvent);
+    $appEvent = $trakerr_client->createAppEvent("Error", "TestType", "Test message from php");
+    $trakerr_client->sendEvent($appEvent);
 
-    // Option-3: catch and send error to Severr
+    // Option-3: catch and send error to Trakerr
     try {
         throw new Exception("test exception");
     } catch(Exception $e) {
-        $severr_client->sendError("Error", $e);
+        $trakerr_client->sendError("Error", $e);
     }
 
 ?>

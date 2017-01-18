@@ -1,26 +1,26 @@
-# severr\client\EventsApi
+# trakerr\client\EventsApi
 
-All URIs are relative to *https://www.severr.io/api/v1*
+All URIs are relative to *https://www.trakerr.io/api/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**eventsPost**](EventsApi.md#eventsPost) | **POST** /events | Submit an application event or error to Severr
+[**eventsPost**](EventsApi.md#eventsPost) | **POST** /events | Submit an application event or error to Trakerr
 
 
 # **eventsPost**
 > eventsPost($data)
 
-Submit an application event or error to Severr
+Submit an application event or error to Trakerr
 
-The events endpoint submits an application event or an application error / exception with an optional stacktrace field to Severr.  ##### Sample POST request body: ``` {  \"apiKey\": \"a9a2807a2e8fd4602adae9e8f819790a267213234083\",  \"classification\": \"Error\",  \"eventType\": \"System.Exception\",  \"eventMessage\": \"This is a test exception.\",  \"eventTime\": 1479477482291,  \"eventStacktrace\": [    {      \"type\": \"System.Exception\",      \"message\": \"This is a test exception.\",      \"traceLines\": [        {          \"function\": \"Main\",          \"line\": 19,          \"file\": \"SeverrSampleApp\\\\Program.cs\"        }      ]    }  ],  \"contextAppVersion\": \"1.0\",  \"contextEnvName\": \"development\",  \"contextEnvHostname\": \"severr.io\",  \"contextAppOS\": \"Win32NT Service Pack 1\",  \"contextAppOSVersion\": \"6.1.7601.65536\" } ``` ##### Sample POST response body (200 OK): ``` { } ```
+The events endpoint submits an application event or an application error / exception with an optional stacktrace field to Trakerr.  ##### Sample POST request body: ``` {  \"apiKey\": \"a9a2807a2e8fd4602adae9e8f819790a267213234083\",  \"classification\": \"Error\",  \"eventType\": \"System.Exception\",  \"eventMessage\": \"This is a test exception.\",  \"eventTime\": 1479477482291,  \"eventStacktrace\": [    {      \"type\": \"System.Exception\",      \"message\": \"This is a test exception.\",      \"traceLines\": [        {          \"function\": \"Main\",          \"line\": 19,          \"file\": \"TrakerrSampleApp\\\\Program.cs\"        }      ]    }  ],  \"contextAppVersion\": \"1.0\",  \"contextEnvName\": \"development\",  \"contextEnvHostname\": \"trakerr.io\",  \"contextAppOS\": \"Win32NT Service Pack 1\",  \"contextAppOSVersion\": \"6.1.7601.65536\" } ``` ##### Sample POST response body (200 OK): ``` { } ```
 
 ### Example
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$api_instance = new severr\client\Api\EventsApi();
-$data = new \severr\client\model\AppEvent(); // \severr\client\model\AppEvent | Event to submit
+$api_instance = new trakerr\client\Api\EventsApi();
+$data = new \trakerr\client\model\AppEvent(); // \trakerr\client\model\AppEvent | Event to submit
 
 try {
     $api_instance->eventsPost($data);
@@ -34,7 +34,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**\severr\client\model\AppEvent**](../Model/\severr\client\model\AppEvent.md)| Event to submit |
+ **data** | [**\trakerr\client\model\AppEvent**](../Model/\trakerr\client\model\AppEvent.md)| Event to submit |
 
 ### Return type
 

@@ -1,5 +1,5 @@
 {
-    "name": "severr/severr-php",
+    "name": "trakerr/trakerr-php",
     "description": "",
     "keywords": [
         "swagger",
@@ -27,9 +27,9 @@
         "squizlabs/php_codesniffer": "~2.6"
     },
     "autoload": {
-        "psr-4": { "severr\\" : [ "lib/", "generated/SwaggerClient-php/lib/"] }
+        "psr-4": { "trakerr\\" : [ "lib/", "generated/SwaggerClient-php/lib/"] }
     },
     "autoload-dev": {
-        "psr-4": { "severr\\" : [ "test/", "generated/SwaggerClient-php/test/" ] }
+        "psr-4": { "trakerr\\" : [ "test/", "generated/SwaggerClient-php/test/" ] }
     }
 }

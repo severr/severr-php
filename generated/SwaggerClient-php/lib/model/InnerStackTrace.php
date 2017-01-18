@@ -5,16 +5,16 @@
  * PHP version 5
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
 /**
- * Severr API
+ * Trakerr API
  *
- * Get your application events and errors to Severr via the *Severr API*.
+ * Get your application events and errors to Trakerr via the *Trakerr API*.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -39,7 +39,7 @@
  * Do not edit the class manually.
  */
 
-namespace severr\client\model;
+namespace trakerr\client\model;
 
 use \ArrayAccess;
 
@@ -48,7 +48,7 @@ use \ArrayAccess;
  *
  * @category    Class */
 /** 
- * @package     severr\client
+ * @package     trakerr\client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
@@ -68,7 +68,7 @@ class InnerStackTrace implements ArrayAccess
     protected static $swaggerTypes = array(
         'type' => 'string',
         'message' => 'string',
-        'trace_lines' => '\severr\client\model\StackTraceLines'
+        'trace_lines' => '\trakerr\client\model\StackTraceLines'
     );
 
     public static function swaggerTypes()
@@ -209,7 +209,7 @@ class InnerStackTrace implements ArrayAccess
 
     /**
      * Gets trace_lines
-     * @return \severr\client\model\StackTraceLines
+     * @return \trakerr\client\model\StackTraceLines
      */
     public function getTraceLines()
     {
@@ -218,7 +218,7 @@ class InnerStackTrace implements ArrayAccess
 
     /**
      * Sets trace_lines
-     * @param \severr\client\model\StackTraceLines $trace_lines
+     * @param \trakerr\client\model\StackTraceLines $trace_lines
      * @return $this
      */
     public function setTraceLines($trace_lines)
@@ -279,10 +279,10 @@ class InnerStackTrace implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\trakerr\client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\severr\client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\trakerr\client\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

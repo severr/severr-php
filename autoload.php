@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Severr  Client API
+ * Trakerr  Client API
  *
- * Get your application events and errors to Severr via the *Severr API*.
+ * Get your application events and errors to Trakerr via the *Trakerr API*.
  *
  * OpenAPI spec version: 1.0.0
  *
@@ -26,10 +26,10 @@
  * An example of a project-specific implementation.
  *
  * After registering this autoload function with SPL, the following line
- * would cause the function to attempt to load the \severr\Baz\Qux class
+ * would cause the function to attempt to load the \trakerr\Baz\Qux class
  * from /path/to/project/lib/Baz/Qux.php:
  *
- *      new \severr\Baz\Qux;
+ *      new \trakerr\Baz\Qux;
  *
  * @param string $class The fully-qualified class name.
  *
@@ -37,14 +37,14 @@
  */
 spl_autoload_register(function ($class) {
     // project-specific namespace prefix
-    $relative_class_name = getRelativeClassName($class, 'severr\\client');
+    $relative_class_name = getRelativeClassName($class, 'trakerr\\client');
 
     if(!is_null($relative_class_name)) {
 
         // base directory for the namespace prefix
         $base_dir = __DIR__ . '/generated/SwaggerClient-php/lib/';
     } else {
-        $relative_class_name = getRelativeClassName($class, 'severr\\');
+        $relative_class_name = getRelativeClassName($class, 'trakerr\\');
 
         // move to the next registered autoloader
         if(!$relative_class_name) { return; }

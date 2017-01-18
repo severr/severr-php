@@ -4,16 +4,16 @@
  * PHP version 5
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
 /**
- * Severr API
+ * Trakerr API
  *
- * Get your application events and errors to Severr via the *Severr API*.
+ * Get your application events and errors to Trakerr via the *Trakerr API*.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -38,18 +38,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace severr\client;
+namespace trakerr\client;
 
-use \severr\client\Configuration;
-use \severr\client\ApiClient;
-use \severr\client\ApiException;
-use \severr\client\ObjectSerializer;
+use \trakerr\client\Configuration;
+use \trakerr\client\ApiClient;
+use \trakerr\client\ApiException;
+use \trakerr\client\ObjectSerializer;
 
 /**
  * EventsApiTest Class Doc Comment
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -92,7 +92,7 @@ class EventsApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for eventsPost
      *
-     * Submit an application event or error to Severr.
+     * Submit an application event or error to Trakerr.
      *
      */
     public function testEventsPost()

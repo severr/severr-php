@@ -5,16 +5,16 @@
  * PHP version 5
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
 /**
- * Severr API
+ * Trakerr API
  *
- * Get your application events and errors to Severr via the *Severr API*.
+ * Get your application events and errors to Trakerr via the *Trakerr API*.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -39,15 +39,15 @@
  * Please update the test case below to test the model.
  */
 
-namespace severr\client;
+namespace trakerr\client;
 
 /**
  * CustomDataTest Class Doc Comment
  *
  * @category    Class */
-// * @description (optional) Custom string or double data to submit along with the event. This data can then be used in the Severr UI to view segmented data.
+// * @description (optional) Custom string or double data to submit along with the event. This data can then be used in the Trakerr UI to view segmented data.
 /**
- * @package     severr\client
+ * @package     trakerr\client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen

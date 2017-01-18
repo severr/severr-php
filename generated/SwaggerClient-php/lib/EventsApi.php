@@ -4,16 +4,16 @@
  * PHP version 5
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
  */
 
 /**
- * Severr API
+ * Trakerr API
  *
- * Get your application events and errors to Severr via the *Severr API*.
+ * Get your application events and errors to Trakerr via the *Trakerr API*.
  *
  * OpenAPI spec version: 1.0.0
  * 
@@ -38,18 +38,18 @@
  * Do not edit the class manually.
  */
 
-namespace severr\client;
+namespace trakerr\client;
 
-use \severr\client\Configuration;
-use \severr\client\ApiClient;
-use \severr\client\ApiException;
-use \severr\client\ObjectSerializer;
+use \trakerr\client\Configuration;
+use \trakerr\client\ApiClient;
+use \trakerr\client\ApiException;
+use \trakerr\client\ObjectSerializer;
 
 /**
  * EventsApi Class Doc Comment
  *
  * @category Class
- * @package  severr\client
+ * @package  trakerr\client
  * @author   http://github.com/swagger-api/swagger-codegen
  * @license  http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link     https://github.com/swagger-api/swagger-codegen
@@ -60,20 +60,20 @@ class EventsApi
     /**
      * API Client
      *
-     * @var \severr\client\ApiClient instance of the ApiClient
+     * @var \trakerr\client\ApiClient instance of the ApiClient
      */
     protected $apiClient;
 
     /**
      * Constructor
      *
-     * @param \severr\client\ApiClient|null $apiClient The api client to use
+     * @param \trakerr\client\ApiClient|null $apiClient The api client to use
      */
-    public function __construct(\severr\client\ApiClient $apiClient = null)
+    public function __construct(\trakerr\client\ApiClient $apiClient = null)
     {
         if ($apiClient == null) {
             $apiClient = new ApiClient();
-            $apiClient->getConfig()->setHost('https://www.severr.io/api/v1');
+            $apiClient->getConfig()->setHost('https://www.trakerr.io/api/v1');
         }
 
         $this->apiClient = $apiClient;
@@ -82,7 +82,7 @@ class EventsApi
     /**
      * Get API client
      *
-     * @return \severr\client\ApiClient get the API client
+     * @return \trakerr\client\ApiClient get the API client
      */
     public function getApiClient()
     {
@@ -92,11 +92,11 @@ class EventsApi
     /**
      * Set the API client
      *
-     * @param \severr\client\ApiClient $apiClient set the API client
+     * @param \trakerr\client\ApiClient $apiClient set the API client
      *
      * @return EventsApi
      */
-    public function setApiClient(\severr\client\ApiClient $apiClient)
+    public function setApiClient(\trakerr\client\ApiClient $apiClient)
     {
         $this->apiClient = $apiClient;
         return $this;
@@ -105,11 +105,11 @@ class EventsApi
     /**
      * Operation eventsPost
      *
-     * Submit an application event or error to Severr
+     * Submit an application event or error to Trakerr
      *
-     * @param \severr\client\model\AppEvent $data Event to submit (required)
+     * @param \trakerr\client\model\AppEvent $data Event to submit (required)
      * @return void
-     * @throws \severr\client\ApiException on non-2xx response
+     * @throws \trakerr\client\ApiException on non-2xx response
      */
     public function eventsPost($data)
     {
@@ -120,11 +120,11 @@ class EventsApi
     /**
      * Operation eventsPostWithHttpInfo
      *
-     * Submit an application event or error to Severr
+     * Submit an application event or error to Trakerr
      *
-     * @param \severr\client\model\AppEvent $data Event to submit (required)
+     * @param \trakerr\client\model\AppEvent $data Event to submit (required)
      * @return Array of null, HTTP status code, HTTP response headers (array of strings)
-     * @throws \severr\client\ApiException on non-2xx response
+     * @throws \trakerr\client\ApiException on non-2xx response
      */
     public function eventsPostWithHttpInfo($data)
     {
@@ -175,7 +175,7 @@ class EventsApi
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 default:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\severr\client\model\Error', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\trakerr\client\model\Error', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }

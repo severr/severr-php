@@ -2,28 +2,28 @@
 
 /**
  */
-namespace severr;
+namespace trakerr;
 
 use Exception;
-use severr\client\model\InnerStackTrace;
-use severr\client\model\Stacktrace;
-use severr\client\model\StackTraceLine;
-use severr\client\model\StackTraceLines;
+use trakerr\client\model\InnerStackTrace;
+use trakerr\client\model\Stacktrace;
+use trakerr\client\model\StackTraceLine;
+use trakerr\client\model\StackTraceLines;
 
 class ErrorHelper
 {
-    private $severrClient;
+    private $trakerrClient;
 
     /*
-     * Constructor that takes in the severr client to use.
+     * Constructor that takes in the trakerr client to use.
      */
-    public function __construct(\severr\SeverrClient $severrClient)
+    public function __construct(\trakerr\TrakerrClient $trakerrClient)
     {
-        $this->severrClient = $severrClient;
+        $this->trakerrClient = $trakerrClient;
     }
 
     public function createAppEvent($classification, Exception $exc) {
-        $appEvent = $this->severrClient->createAppEvent($classification, get_class($exc), $exc->getMessage());
+        $appEvent = $this->trakerrClient->createAppEvent($classification, get_class($exc), $exc->getMessage());
         $appEvent->setEventStacktrace($this->createStacktrace(array(), $exc));
         return $appEvent;
     }
@@ -97,13 +97,13 @@ class ErrorHelper
         }
 
         $appEvent = $this->buildAppEvent($classification, $exc);
-        $this->severrClient->sendEvent($appEvent);
+        $this->trakerrClient->sendEvent($appEvent);
     }
 
     public function onException($exc)
     {
         $appEvent = $this->buildAppEvent("Error", $exc);
-        $this->severrClient->sendEvent($appEvent);
+        $this->trakerrClient->sendEvent($appEvent);
     }
 
     public function onShutdown()
@@ -117,7 +117,7 @@ class ErrorHelper
         }
 
         $appEvent = $this->buildAppEvent("Fatal", new Exception($error['message']));
-        $this->severrClient->sendEvent($appEvent);
+        $this->trakerrClient->sendEvent($appEvent);
     }
 
     public function register()
